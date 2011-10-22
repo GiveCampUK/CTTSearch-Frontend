@@ -2,8 +2,34 @@
   Explore Categories
 <% end %>
 
-<h1>Under [category], we found:</h1>
 
-<div class="categories">
-  <%= erb :categories %>
+
+
+<div id="category_explore">
+
+  <div id="top_level_categories">
+    <h2>Categories</h2>
+    <ul>
+      <% @top_level_categories.each do |cat| %>
+        <li>
+          <h3><a href="#"><%= cat[:title] %></a></h3>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div id="sub-categories">
+
+    <h2>Some category</h2>
+
+    <%= erb :categories %>
+
+    <div id="search_input_area" class="panel">
+      <h2>I want to find out:</h2>
+      <input name="query" id="query" />
+      <input class="submit" type="submit" value="Search" />
+    </div>
+
+  </div>
+
 </div>

@@ -1,12 +1,15 @@
+<div class="categories">
 
-<% @categories.each do |cat| %>
-	<div class="category">
-		<h3><a href="#"><%= cat[:title] %></a></h3>
-		<p><%= cat[:blurb] %></p>
-		<ul>
-			<li><a href="#">How do I set up my emails?</a></li>
-			<li><a href="#">Category item</a></li>
-			<li><a href="#">Category item</a></li>
-		</ul>
-	</div>
-<% end %>
+	<% @categories.each do |cat| %>
+		<div class="category">
+			<h3><a href="#"><%= cat[:title] %></a></h3>
+			<p><%= cat[:blurb] %></p>
+			<ul>
+				<li><a href="#">How do I set up my emails?</a></li>
+				<li><a href="#">Category item</a></li>
+				<li><a href="#">Category item</a></li>
+			</ul>
+		</div>
+	<% end %>
+
+</div>

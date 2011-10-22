@@ -6,7 +6,6 @@
 
 ## TODO
 
-- Get Running on Heroku
 - Possible Bug in '`search_uri_builder`'?
 - Define High-Level Categories for Home Page
 - Limit Results to 3

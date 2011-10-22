@@ -285,3 +285,55 @@ h1 {
 	text-align: left;
 	margin-bottom: 5px;
 }
+
+/************************/
+/** CATEGORY EXPLORER ***/
+/************************/
+
+#category_explore {
+	overflow: hidden;
+}
+
+
+#top_level_categories {
+	float: left;
+	width: 180px;
+}
+
+#top_level_categories h2 {
+	padding: 5px 0 7px 5px;
+}
+
+#top_level_categories ul {
+	border-top: 1px solid #8FC63F;
+	border-bottom: 1px solid #8FC63F;
+
+}
+
+#top_level_categories li {
+	padding: 6px;
+	border-top: 1px solid #8FC63F;
+	border-bottom: 1px solid #8FC63F;
+	background: #E8F2D6;
+	list-style: none;
+}
+
+#category_explore #sub-categories {
+	overflow: hidden;
+	padding-left: 20px;
+	margin-top: 0;
+	float: left;
+}
+
+#category_explore #sub-categories h2 {
+	padding: 5px 0 7px 10px;
+}
+
+#category_explore #sub-categories .categories .category {
+	width: 210px;
+}
+
+#category_explore #search_input_area {
+	clear: both;
+	margin-top: 40px;
+}
