@@ -22,7 +22,8 @@ class CTTSearch < Sinatra::Base
   get '/search/?' do
     @query = params[:q]
     @tags = (params[:tags] || "").split(",")
-    @results = Search.party(@query, @tags)
+    hits = Search.party(@query, @tags)
+    @results = SearchResultsOrganiser.new.sort hits
   	erb :results
   end
   

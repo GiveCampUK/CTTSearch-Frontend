@@ -25,6 +25,7 @@ class Search
   def self.query_api(path)
     begin
       uri = "#{base_uri}#{path}"
+      p "Querying API Via: '#{uri}'"
       JSON.parse(URI.parse(uri).read)
     rescue => ex
       p ex.inspect
