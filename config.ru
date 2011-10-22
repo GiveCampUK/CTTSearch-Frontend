@@ -1,0 +1,2 @@
+require './cttsearch'
+run CTTSearch

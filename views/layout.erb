@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>
+      CTT Search Party - <% yield_content :title %>
+    </title>
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/dark-hive/jquery-ui-1.8.16.custom.css" />
+    <% yield_content :end_head %>
+  </head>
+  <body>
+
+    <div id="main">
+
+      <div id="head">
+        <a href="/" id="logo">Search Party</a>
+      </div>
+
+      <div id="content">
+        <%= yield %>
+      </div>
+
+    </div>
+
+  </body>
+  <% yield_content :end_body %>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+  <script src="/js/jquery-ui-1.8.16.custom.min.js"></script>
+  <script src="/js/main.js"></script>
+  <script>
+    CTT.init();
+  </script>
+
+</html>

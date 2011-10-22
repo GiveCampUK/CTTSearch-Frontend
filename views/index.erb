@@ -1,0 +1,41 @@
+<% content_for :title do %>
+	Home
+<% end %>
+
+<div id="introduction" class="panel">
+	<p>
+		CTT Search Party brings together our expertise to help you find information and resources about how your
+		charity can better utilise technology.
+	</p>
+</div>
+
+<form action="/process" method="get">
+
+	<div id="who_are_you" class="panel">
+	
+		<h2>Tell us about yourself so that we can give you appropriate advice</h2>
+
+		<label for="org_size">How big is your organisation?</label>
+		<select id="org_size" name="org_size">
+			<option value="org_size:1to5">1-5</option>
+			<option value="org_size:6to25">6-25</option>
+			<option value="org_size:26plus">26+</option>
+		</select>
+
+		<label for="user_prof">How technically minded are you?<br/>(in regards to I.T)</label>
+		<select id="user_prof" name="user_prof">
+			<option value="user_prof:novice">Novice</option>
+			<option value="user_prof:intermediate">Intermediate</option>
+			<option value="user_prof:advanced">Advanced</option>
+		</select>
+	</div>
+
+	<div id="search_input_area" class="panel">
+		<h2>I want to find out:</h2>
+		<input name="query" id="query" />
+		<input class="submit" type="submit" value="Search" />
+	</div>
+
+</form>
+
+<%= erb :popular_topics %>

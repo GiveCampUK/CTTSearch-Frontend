@@ -1,0 +1,85 @@
+<% content_for :title do %>
+	Look what we found!
+<% end %>
+<div id="results_page">
+
+	<form action="/process" method="get">
+
+    <% @tags.each do |tag| %>
+      <% name, value = tag.split(":")[0] %>
+      <input type="hidden" name="<%= name %>" value="<%= tag %>" />
+    <% end %>
+
+		<div id="search_input_area" class="panel">
+			<input value="<%= @query %>" name="query" id="query" />
+			<input class="submit" type="submit" value="Search" />
+		</div>
+
+	</form>
+
+	<% if @query.empty? %>
+	  <p>Exactly what you asked for!</p>
+	  <p><a href="http://www.sadtrombone.com" target="_blank">Now Go Here</a></p>
+	<% else %>
+
+		<div class="results">
+			<ul class="alternate_level_nav">
+				<li class="selected"><a href="#">Novice</a></li>
+				<li><a href="#">Intermediate</a></li>
+				<li><a href="#">Advanced</a></li>
+			</ul>
+			<div class="content">
+
+				<div class="column first_column">
+
+					<div class="result type_text promoted">
+						<h3>This is content!</h3>
+						<p>Interesting thing detailing how to do interesting thing.</p>
+					</div>
+
+					<div class="result type_video">
+						<iframe width="420" height="300" src="http://www.youtube.com/embed/QH2-TGUlwu4" frameborder="0" allowfullscreen></iframe>
+					</div>
+
+					<div class="result type_link">
+						
+					</div>
+
+					<div class="result type_text">
+						<h3>This is content!</h3>
+						<p>Interesting thing detailing how to do interesting thing.</p>
+					</div>
+
+					<div class="result type_video">
+						<iframe width="420" height="300" src="http://www.youtube.com/embed/QH2-TGUlwu4" frameborder="0" allowfullscreen></iframe>
+					</div>
+
+				</div>
+
+				<div class="column">
+
+					<div class="result type_video video_with_description promoted">
+						<iframe width="420" height="300" src="http://www.youtube.com/embed/QH2-TGUlwu4" frameborder="0" allowfullscreen></iframe>
+						<div class="description">
+							<p>Nyan cat is the 7th reincarnation of the Egyption Goddess, Gah, an ominous presence that ruled the...</p>
+						</div>
+					</div>
+
+					<div class="result type_text">
+						<h3>This is content!</h3>
+						<p>Interesting thing detailing how to do interesting thing.</p>
+					</div>
+
+					<div class="result type_text">
+						<h3>This is content!</h3>
+						<p>Interesting thing detailing how to do interesting thing.</p>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+
+	<% end %>
+
+</div>
