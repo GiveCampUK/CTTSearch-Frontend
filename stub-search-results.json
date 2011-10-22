@@ -1,0 +1,37 @@
+{
+   "results":[
+      [
+         {
+            "id":1,
+            "title":"Spam - solutions anyone?",
+            "uri":"http://www.ictknowledgebase.org.uk/spamsolutions",
+            "tags":"Email,,Spam",
+            "shortDescription":"Spam (unsolicited bulk email) is now a real problem for many organisations. This article will help you choose a solution for your organisation.",
+            "longDescription":"Spam (unsolicited bulk email) is now a real problem for many organisations.his article looks in more depth at how the various solutions on offer work and provides some guidance on issues to consider when choosing a solution for your organisation.",
+            "resourceType":"uri"
+         }
+      ],
+      [
+         {
+            "id":2,
+            "title":"Delete an email contact or an address book",
+            "uri":"http://www.youtube.com/user/CTTCTX?blend=2&ob=5#p/c/6/juYn0TUrW90",
+            "tags":"Email,,Contact,,AddressBook",
+            "shortDescription":"This is a training video to help you delete a contact or addressbook in CTT Mail.",
+            "longDescription":"This is a training video to help you delete a contact or addressbook in CTT Mail.",
+            "resourceType":"uri"
+         }
+      ],
+      [
+         {
+            "id":3,
+            "title":"Changing Font Colours in Email",
+            "uri":"http://www.youtube.com/user/CTTCTX?blend=2&ob=5#p/c/10/ZQQloZ3rk5g",
+            "tags":"Email,,Font",
+            "shortDescription":"This is a training video to help you change the font colours used in CTT Mail.",
+            "longDescription":"This is a training video to help you change the font colours used in CTT Mail.",
+            "resourceType":"uri"
+         }
+      ]
+   ]
+}

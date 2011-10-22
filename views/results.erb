@@ -2,6 +2,12 @@
 	Look what we found!
 <% end %>
 <div id="results_page">
+  
+  <div>
+    <pre>
+      <%= @results.inspect %>
+    </pre>
+  </div>
 
 	<form action="/process" method="get">
 
@@ -21,6 +27,8 @@
 	  <p>Exactly what you asked for!</p>
 	  <p><a href="http://www.sadtrombone.com" target="_blank">Now Go Here</a></p>
 	<% else %>
+	
+	<% column1 = @results.select { |item| item[:column] == :column1  } %>
 
 		<div class="results">
 			<ul class="alternate_level_nav">
@@ -31,6 +39,14 @@
 			<div class="content">
 
 				<div class="column first_column">
+				  
+				  <% column1.each do |col1Item| %>
+				  
+				  case col1Item[:tags]
+				    when
+				  end
+
+        	<% end %>
 
 					<div class="result type_text promoted">
 						<h3>This is content!</h3>

@@ -23,6 +23,11 @@ class Search
   end
   
   def self.query_api(path)
+
+    # For when shit goes bad!     
+    # stub = JSON.parse(File.open('stub-search-results.json').read)
+    # return stub['results'][0]
+    
     begin
       uri = "#{base_uri}#{path}"
       p "Querying API Via: '#{uri}'"
