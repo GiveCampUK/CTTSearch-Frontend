@@ -8,7 +8,7 @@ namespace :test do
   
   desc "Run RSpec Specs"
   task :specs do
-    system "rspec specs"
+    system "rspec -c specs"
   end
   
   desc "Run WIP Features"

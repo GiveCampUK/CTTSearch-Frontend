@@ -6,6 +6,9 @@
 
 ## TODO
 
+- Add Results to Results Page
+  - `type_text` for text
+  - `type-video` for video, if it has long-description then *add* class `video_with_description`
 - Possible Bug in '`search_uri_builder`'?
 - Define High-Level Categories for Home Page
 - Limit Results to 3
