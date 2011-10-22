@@ -16,9 +16,9 @@ describe SearchResultsOrganiser do
         ]
         
         result = org.sort items
-        result[:column1].should include(items[0])
-        result[:column1].should include(items[2])
-        result[:column2].should include(items[1])
+        result[0][:column].should eql :column1
+        result[1][:column].should eql :column2
+        result[2][:column].should eql :column1
       end
     end
   end
