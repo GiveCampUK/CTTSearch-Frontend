@@ -20,6 +20,22 @@ describe SearchResultsOrganiser do
         result[1][:column].should eql :column2
         result[2][:column].should eql :column1
       end
+      
+      it "should promote 'promoted' items to the top of the list" do
+        items = [
+          { :title => "test1" },
+          { :title => "test2", :tags => ['promoted'] },
+          { :title => "test3" },
+          { :title => "test4" },
+          { :title => "test5", :tags => ['promoted'] }
+        ]
+        
+        result = org.sort items
+        p result
+        # LIFO - So Test5 First!
+        result[0][:item][:title].should eql "test5"
+        result[1][:item][:title].should eql "test2"
+      end
     end
   end
   
@@ -53,7 +69,7 @@ describe SearchResultsOrganiser do
     end
     
     describe "prototyed types" do
-      it "should add 'promoted' to 'important' items" do
+      it "should add 'promoted' to 'promoted' items" do
         items = [{ :resourceType => "internalLink", :tags => ['promoted'] }]
         result = org.classify items
         result[0][:classes].should include('promoted')

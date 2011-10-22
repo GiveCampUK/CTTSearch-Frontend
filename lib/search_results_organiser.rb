@@ -1,10 +1,20 @@
 class SearchResultsOrganiser
   def sort(items)
+    sorted_promoted = (classify items).sort do |a,b|
+      item1Promoted = a[:classes].include?('promoted')
+      item2Promoted = b[:classes].include?('promoted')
+      
+      compare = 0
+      compare -=1 if item1Promoted
+      compare +=1 if item2Promoted
+      compare
+    end
+    
     odd = false
-    items.map do |item|
+    sorted_promoted.map do |classified_item|
       odd = !odd
       {
-       :item => item,
+       :item => classified_item[:item],
        :column => (odd  ? :column1 : :column2)
       }
     end
