@@ -1,2 +1,2 @@
-require './frontend'
-run Frontend
+require './cttsearch'
+run CTTSearch
