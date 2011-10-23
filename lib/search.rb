@@ -31,7 +31,7 @@ class Search
     begin
       uri = "#{base_uri}#{path}"
       p "Querying API Via: '#{uri}'"
-      JSON.parse(URI.parse(uri).read)
+      JSON.parse(URI.parse(uri).read)['results'].flatten
     rescue => ex
       p ex.inspect
     end
