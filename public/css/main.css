@@ -495,3 +495,22 @@ h1 {
 	color: red;
 	cursor: pointer;
 }
+
+
+
+
+/*...*/
+
+#admin_index_page table {
+	width: 100%;
+	margin-top: 20px;
+}
+
+#admin_index_page table td, #admin_index_page table th {
+	padding: 10px;
+	border: 3px solid #EEE;
+}
+
+#admin_index_page table th {
+	font-size: 1.2em;
+}
