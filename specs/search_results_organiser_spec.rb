@@ -7,6 +7,13 @@ describe SearchResultsOrganiser do
   end
   
   describe "#sort" do
+    describe "no items" do
+      it "should return empty" do
+        result = org.sort [ ]
+        result.count.should eql 0
+      end
+    end
+    
     describe "column layout" do
       it "should put every other item into the second column" do
         items = [
