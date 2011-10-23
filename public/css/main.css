@@ -447,3 +447,15 @@ h1 {
 	clear: both;
 	margin-top: 40px;
 }
+
+/**Styles for admin edit**/
+#title_input_area input {
+  padding: 8px;
+  width: 400px;
+  font-family: sans-serif;
+}
+
+#title_input_area textarea {
+  font-family: sans-serif;
+  width: 500px;
+}
