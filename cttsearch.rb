@@ -39,6 +39,7 @@ class CTTSearch < Sinatra::Base
   end
 
   get '/admin/edit' do
+    @resourcetypes = ['ExternalLink', 'YouTubeVideo', 'InternalLink', 'PDF']
     @resource = Resource.get(params['id']) ## get a list of all entries
 
   	erb :admin_edit

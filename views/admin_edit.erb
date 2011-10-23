@@ -21,10 +21,9 @@
     <textarea cols="50" rows="10" name="LongDescription" id="LongDescription" ><%= @resource['longDescription'] %></textarea><br>
 
     <select id="ResourceType" name="ResourceType">
-      <option selected>ExternalLink</option>
-      <option>YouTubeVideo</option>
-      <option>InternalLink</option>
-      <option>PDF</option>
+      <% @resourcetypes.each do |resourcetype| %>
+        <option <%= 'selected' if resourcetype==@resource['resourceType'] %>><%= resourcetype %></option>
+      <% end %>
     </select>
 
     <input class="submit" type="submit" value="Save" />
