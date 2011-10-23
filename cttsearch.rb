@@ -68,7 +68,7 @@ class CTTSearch < Sinatra::Base
   	erb :admin_edit
   end
 
-  get '/admin/tags/:tags' do
+  get '/admin/tags' do
     @tags = (params[:tags] || "").split(",")
     @results = Search.party(' ', @tags) ## get a list of all entries with given tags
     erb :admin_index

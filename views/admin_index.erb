@@ -16,6 +16,13 @@
   <h2>Edit existing Resources</h2>
 <% if @tags %>
   <p>Only showing resources tagged with: <%= @tags %></p>
+<% else %>
+  <p>
+    <form action="/admin/tags" method="get">
+      Filter by tags: <input name="tags" id="Tags" value="<%= @tags %>" />
+      <input class="submit" type="submit" value="Filter" />
+    </form>
+  </p>
 <% end %>
 <table>
   <tr>
