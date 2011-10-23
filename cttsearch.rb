@@ -23,6 +23,7 @@ class CTTSearch < Sinatra::Base
     @query = params[:q]
     @tags = (params[:tags] || "").split(",")
     hits = Search.party(@query, @tags)
+    p hits
     @results = SearchResultsOrganiser.new.sort hits
   	erb :results
   end
@@ -50,6 +51,12 @@ class CTTSearch < Sinatra::Base
     @resource = {'id' => 0, 'title' => '', 'uri' => '', 'tags' => '', 'shortDescription' => '', 'longDescription' => '', 'resourceType' => ''}
 
   	erb :admin_edit
+  end
+
+  get '/admin/tags/:tags' do
+    @tags = (params[:tags] || "").split(",")
+    @results = Search.party(' ', @tags) ## get a list of all entries with given tags
+    erb :admin_index
   end
 
 end
