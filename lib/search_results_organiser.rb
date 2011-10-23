@@ -10,14 +10,20 @@ class SearchResultsOrganiser
       compare
     end
     
+    column1Items = [ ]
+    column2Items = [ ]
     odd = false
     sorted_promoted.map do |classified_item|
       odd = !odd
-      {
-       :item => classified_item[:item],
-       :column => (odd  ? :column1 : :column2)
-      }
+      
+      if odd
+        column1Items << classified_item[:item]
+      else
+        column2Items << classified_item[:item]
+      end
     end
+    
+    SearchResults.new(column1Items, column2Items)
   end
   
   def classify(items)
@@ -32,5 +38,18 @@ class SearchResultsOrganiser
         :classes => item_classes
       }
     end
+  end
+end
+
+class SearchResults
+  attr_reader :column1, :column2
+  
+  def initialize(column1Items, column2Items)
+    @column1 = column1Items || [ ]
+    @column2 = column2Items || [ ]
+  end
+  
+  def empty?
+    @column1.empty? && @column2.empty?
   end
 end

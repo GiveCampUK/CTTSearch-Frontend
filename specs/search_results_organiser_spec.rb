@@ -10,38 +10,38 @@ describe SearchResultsOrganiser do
     describe "no items" do
       it "should return empty" do
         result = org.sort [ ]
-        result.count.should eql 0
+        result.empty?.should be_true
       end
     end
     
     describe "column layout" do
       it "should put every other item into the second column" do
-        items = [
-          { :title => "first col" },
-          { :title => "second col" },
-          { :title => "first col (again)" }
-        ]
+        a = { :title => "first col" }
+        b = { :title => "second col" }
+        c = { :title => "first col (again)" }
+
+        result = org.sort [a,b,c]
         
-        result = org.sort items
-        result[0][:column].should eql :column1
-        result[1][:column].should eql :column2
-        result[2][:column].should eql :column1
+        result.column1.should include(a)
+        result.column1.should include(c)
+        result.column2.should include(b)
       end
       
       it "should promote 'promoted' items to the top of the list" do
+        a = { :title => "test2", :tags => ['promoted'] }
+        b = { :title => "test5", :tags => ['promoted'] }
         items = [
           { :title => "test1" },
-          { :title => "test2", :tags => ['promoted'] },
+          a,
           { :title => "test3" },
           { :title => "test4" },
-          { :title => "test5", :tags => ['promoted'] }
+          b
         ]
         
         result = org.sort items
-        p result
         # LIFO - So Test5 First!
-        result[0][:item][:title].should eql "test5"
-        result[1][:item][:title].should eql "test2"
+        result.column1[0].should be b
+        result.column2[0].should be a
       end
     end
   end

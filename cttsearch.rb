@@ -23,13 +23,11 @@ class CTTSearch < Sinatra::Base
     @query = params[:q]
     @tags = (params[:tags] || "").split(",")
     hits = Search.party(@query, @tags)
-    p "Hits:", hits
     @results = SearchResultsOrganiser.new.sort hits
   	erb :results
   end
   
   get '/process' do
-    p params[:query], params[:org_size], params[:user_prof]
     builder = SearchUriBuilder.new(params[:query],[ params[:org_size], params[:user_prof]])
     p "Redirecting to Search?: #{builder.uri}"
     redirect builder.uri

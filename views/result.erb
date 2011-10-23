@@ -1,19 +1,34 @@
-<% content_for :title do %>
-	Single entity (result)
-<% end %>
-<div id="result_page">
-	<h1>Content title</h1>
+<%				  
+  type_class = case item["resourceType"]
+    when /uri|ExternalLink|ExternalPage/i
+      "type_link"
+    when /YouTubeVideo/i
+      "type_video"
+    when /PDF/i
+      "type_pdf"
+    else
+      "type_text"
+  end
+  promoted_class = item["tags"].include?("promoted") ? "promoted" : ""
+%>
 
-	<div class="content">
-		<!-- Fed in from somewhere -->
-		<!-- [stub data] -->
-
-		<p>Blah'ing is not so easy for smaller organisations. Here are a few effective ways to blah:</p>
-		<ul>
-			<li>Spend less on Blah 1.0</li>
-			<li>Teach your communications staff about the concept behind Blah</li>
-			<li>We suggest using Blah 3.0 Beta.</li>
-		</ul>
+<% if type_class =="type_link" %>
+  <div class="result type_text <%= promoted_class %>">
+		<h3><%= item["title"] %></h3>
+		<p><%= item["shortDescription"] %></p>
+		<a class="read_more" href="<%= item["uri"] %>" target="_blank">Read more &raquo;</a>
 	</div>
+<% end %>
 
-</div>
+<% if type_class =="type_video" %>
+  <div class="result type_video">
+		<iframe width="420" height="300" src="<%= item["uri"] %>" frameborder="0" allowfullscreen></iframe>
+	</div>
+<% end %>
+
+<% if type_class =="type_text" %>
+  <div class="result type_text">
+    <h3><%= item["title"] %></h3>
+    <p><%= item["shortDescription"] %></p>
+  </div>
+<% end %>
