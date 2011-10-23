@@ -34,11 +34,13 @@ class CTTSearch < Sinatra::Base
   end
 
   get '/admin' do
-    @results = Search.party(' ', [])
+    @results = Search.party(' ', []) ## get a list of all entries
   	erb :admin_index
   end
 
   get '/admin/edit' do
+    @resource = Resource.get(params['id']) ## get a list of all entries
+
   	erb :admin_edit
   end
 
