@@ -9,7 +9,7 @@
   <tr>
   <% @results['results'].each do |result| %>
     <tr>
-      <th> <a href="/admin/edit?id=<%= result[0]['id'] %>" >Search Party <%= result[0]['title'] %> </a> </th>
+      <th> <a href="/admin/edit?id=<%= result[0]['id'] %>" ><%= result[0]['title'] %> </a> </th>
     </tr>
   <% end %>
       
