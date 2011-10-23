@@ -459,3 +459,30 @@ h1 {
   font-family: sans-serif;
   width: 450px;
 }
+
+
+/************************/
+/****** ADMIN TAGS ******/
+/************************/
+
+#title_input_area .taglist_input {
+	width: 100px;
+	padding: 2px;
+	display: inline;
+}
+
+.taglist .tag {
+	padding: 4px;
+	background: #E8F2D6;
+	border: 1px solid #CCC;
+	margin: 0 5px 5px 0;
+	border-radius: 4px;
+	font-weight: 700;
+	color: #000;
+	display: inline-block;
+}
+
+.taglist .tag .trm {
+	color: red;
+	cursor: pointer;
+}

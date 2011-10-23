@@ -2,7 +2,7 @@
 
 !function() {
 	
-	this.CTT = {
+	var CTT = this.CTT = {
 
 		views: [
 			['.', {
@@ -27,6 +27,108 @@
 						}
 					});
 				}
+
+			}],
+			['/admin/(?:new|edit)', {
+				
+				init: function() {
+					this.tagList = new this.TagList(this, $('input#Tags'));
+				},
+
+				/**
+				 * TagList impl.
+				 * Facebook-like input tags
+				 */
+
+				TagList: Klass({
+					init: function(view, el) {
+
+						this.view = view;
+						this.domRealInput = $(el);
+						this.domRealInput.hide();
+
+						this.domInput = $('<input class="taglist_input" />');
+						this.domAdd = $('<button>Add</button>');
+						this.domTags = $('<span class="tags"></span>');
+						this.dom = $('<div class="taglist" />').insertBefore(this.domRealInput);
+
+						this.dom
+							.append(this.domTags)
+							.append(this.domInput)
+							.append(this.domAdd);
+
+						this.initValues();
+						this.listen();
+
+					},
+					initValues: function() {
+						this.tags = [];
+						var value = this.domRealInput.val().split(',');
+						for (var i = -1, l = value.length; ++i < l;) {
+							this.tags.push(
+								new this.view.TagListTag(value[i], this)
+							);
+						}
+					},
+					listen: function() {
+						var me = this;
+						this.domInput.keypress(function(e){
+							if (e.keyCode == 13 || e.keyCode == 188) {
+								me.tags.push(
+									new me.view.TagListTag(this.value, me)
+								);
+								this.value = '';
+								me.resetRealInput();
+								return false;
+							}
+						});
+						this.domAdd.click(function(){
+							me.tags.push(
+								new me.view.TagListTag(me.domInput.val(), me)
+							);
+							me.domInput.val('');
+							me.resetRealInput();
+							return false;
+						})
+					},
+					resetRealInput: function() {
+						this.domRealInput.val( String(this) );
+					},
+					toString: function() {
+						return this.tags.join(', ').replace(/,,|^,|,$/g, '');
+					}
+				}),
+
+				TagListTag: Klass({
+					init: function(v, tagListInstance) {
+
+						this.value = v || '';
+
+						if (/^\s*$/.test(this.value)) return;
+
+						this.tagList = tagListInstance;
+						this.dom = $('<span class="tag"><span class="tval"></span><span class="trm"> x</span></span>');
+						this.domRm = this.dom.find('.trm');
+						this.domVal = this.dom.find('.tval');
+						this.domVal.text(this.value);
+						this.tagList.domTags.append(this.dom);
+						this.listen();
+					},
+					listen: function() {
+						var me = this;
+						this.domRm.click(function(){
+							me.remove();
+						});
+					},
+					remove: function() {
+						this.value = '';
+						this.dom.remove();
+						this.tagList.resetRealInput();
+					},
+					toString: function(){
+						return this.value.replace(/^\s+|\s+$/g);
+					}
+				})
 
 			}],
 			['/search', {
@@ -136,6 +238,12 @@
 		}
 
 	};
+
+	function Klass(o) {
+		var constructor = o.init;
+		constructor.prototype = o;
+		return constructor;
+	}
 
 	Function.prototype.bind = Function.prototype.bind || function(b) {
 		var f = this; return function() {return f.apply(b, arguments);};
