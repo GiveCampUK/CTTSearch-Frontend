@@ -11,29 +11,37 @@
 <% end %>
 
 <form action="http://searchparty-1.apphb.com/Resource/Update" method="post">
-
-  <div id="title_input_area" class="panel">
+<table  id="title_input_area" class="panel" >
+<tr>
+<td valign="top">
     <input id="Id" name="Id" type="hidden" value="<%= @resource['id'] %>" />
     <h2>Title:</h2>
-    <input name="Title" id="Title" value="<%= @resource['title'] %>" /><br>
-    <h2>Uri:</h2>
-    <input name="Uri" id="Uri" value="<%= @resource['uri'] %>" /><br>
+		<input name="Title" id="Title" value="<%= @resource['title'] %>" /><br>
+
+    <h2>Url for resource:</h2>
+		<input name="Uri" id="Uri" value="<%= @resource['uri'] %>" /><br>
+
+	<h2>Type of Resource</h2>
+		<select id="ResourceType" name="ResourceType">
+	      <% @resourcetypes.each do |resourcetype| %>
+	        <option <%= 'selected' if resourcetype==@resource['resourceType'] %>><%= resourcetype %></option>
+	      <% end %>
+	    </select>
+
     <h2>Tags:</h2>
     <input name="Tags" id="Tags" value="<%= @resource['tags'] %>" /><br>
+</td>
+<td>
+	
     <h2>Short Description:</h2>
     <textarea cols="50" rows="10" name="ShortDescription" id="ShortDescription" ><%= @resource['shortDescription'] %></textarea><br>
     <h2>Long Description:</h2>
     <textarea cols="50" rows="10" name="LongDescription" id="LongDescription" ><%= @resource['longDescription'] %></textarea><br>
-
-    <select id="ResourceType" name="ResourceType">
-      <% @resourcetypes.each do |resourcetype| %>
-        <option <%= 'selected' if resourcetype==@resource['resourceType'] %>><%= resourcetype %></option>
-      <% end %>
-    </select>
-
-    <input class="submit" type="submit" value="Save" />
+</td>
+</tr>
+</table>
   </div>
-
+<input class="submit" type="submit" value="Save" />
 
 </form>
 
