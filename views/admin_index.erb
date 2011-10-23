@@ -9,6 +9,9 @@
 <br>
 <br>
   <h2>Edit existing Resources</h2>
+<% if @tags %>
+  <p>Only showing resources tagged with: <%= @tags %></p>
+<% end %>
 <table>
   <tr>
     <th>Title</th>
@@ -16,8 +19,8 @@
   <tr>
   <% @results.each do |result| %>
     <tr>
-      <td width=220 padding=5> <a href="/admin/edit?id=<%= result['id'] %>" ><%= result['title'] %> </a> </td>
-<td width=350><%= result['shortDescription'] %> </a> </td>
+      <td width=220> <a href="/admin/edit?id=<%= result['id'] %>" ><%= result['title'] %> </a> </td>
+<td width=400><%= result['shortDescription'] %> </a> </td>
     </tr>
   <% end %>
       
