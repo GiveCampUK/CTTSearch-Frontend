@@ -95,7 +95,7 @@
 						this.domRealInput.val( String(this) );
 					},
 					toString: function() {
-						return this.tags.join(', ').replace(/,,|^,|,$/g, '');
+						return this.tags.join(',').replace(/,,|^,|,$/g, '');
 					}
 				}),
 
