@@ -40,10 +40,19 @@ a:hover, a:focus { text-decoration: underline; color: #8FC63F;  }
 	background: #EEE;
 }
 
+.submit {
+	padding: 10px;
+	font-size: 1.4em;
+	font-weight: 700;
+}
+
 table, tr, td, th
 {
-border-collapse:collapse;
-border: 1px solid black;
+	border-collapse:collapse;
+}
+
+td {
+	padding: 10px;
 }
 
 .panel h2 {
