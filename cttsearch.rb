@@ -32,4 +32,24 @@ class CTTSearch < Sinatra::Base
     p "Redirecting to Search?: #{builder.uri}"
     redirect builder.uri
   end
+
+  get '/admin' do
+    @results = Search.party(' ', []) ## get a list of all entries
+  	erb :admin_index
+  end
+
+  get '/admin/edit' do
+    @resourcetypes = ['ExternalLink', 'YouTubeVideo', 'InternalLink', 'PDF']
+    @resource = Resource.get(params['id']) ## get a list of all entries
+
+  	erb :admin_edit
+  end
+
+  get '/admin/new' do
+    @resourcetypes = ['ExternalLink', 'YouTubeVideo', 'InternalLink', 'PDF']
+    @resource = {'id' => 0, 'title' => '', 'uri' => '', 'tags' => '', 'shortDescription' => '', 'longDescription' => '', 'resourceType' => ''}
+
+  	erb :admin_edit
+  end
+
 end
