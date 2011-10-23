@@ -5,19 +5,28 @@
 
 <h1>Edit Resource</h1>
 
-<form action="/admin/save" method="post">
+<form action="http://searchparty-1.apphb.com/Resource/Update" method="post">
 
   <div id="title_input_area" class="panel">
+    <input id="Id" name="Id" type="hidden" value="<%= @resource['id'] %>" />
     <h2>Title:</h2>
-    <input name="title" id="title" value="<%= @resource['title'] %>" /><br>
+    <input name="Title" id="Title" value="<%= @resource['title'] %>" /><br>
     <h2>Uri:</h2>
-    <input name="uri" id="uri" value="<%= @resource['uri'] %>" /><br>
+    <input name="Uri" id="Uri" value="<%= @resource['uri'] %>" /><br>
     <h2>Tags:</h2>
-    <input name="tags" id="tags" value="<%= @resource['tags'] %>" /><br>
+    <input name="Tags" id="Tags" value="<%= @resource['tags'] %>" /><br>
     <h2>Short Description:</h2>
-    <textarea cols="50" rows="10" name="shortDescription" id="shortDescription" ><%= @resource['shortDescription'] %></textarea><br>
+    <textarea cols="50" rows="10" name="ShortDescription" id="ShortDescription" ><%= @resource['shortDescription'] %></textarea><br>
     <h2>Long Description:</h2>
-    <textarea cols="50" rows="10" name="longDescription" id="longDescription" ><%= @resource['longDescription'] %></textarea><br>
+    <textarea cols="50" rows="10" name="LongDescription" id="LongDescription" ><%= @resource['longDescription'] %></textarea><br>
+
+    <select id="ResourceType" name="ResourceType">
+      <option selected>ExternalLink</option>
+      <option>YouTubeVideo</option>
+      <option>InternalLink</option>
+      <option>PDF</option>
+    </select>
+
     <input class="submit" type="submit" value="Save" />
   </div>
 
