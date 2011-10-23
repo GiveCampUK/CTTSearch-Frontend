@@ -3,19 +3,25 @@
 <% end %>
 <div id="admin_index_page">
 
+  <h2>Create a new Resource</h2>
+<a href="/admin/new" >Create new resource </a> 
+<br>
+<br>
+<br>
+  <h2>Edit existing Resources</h2>
 <table>
   <tr>
     <th>Title</th>
+	<th> Short Description </th>
   <tr>
   <% @results.each do |result| %>
     <tr>
-      <th> <a href="/admin/edit?id=<%= result['id'] %>" ><%= result['title'] %> </a> </th>
+      <td width=220 padding=5> <a href="/admin/edit?id=<%= result['id'] %>" ><%= result['title'] %> </a> </td>
+<td width=350><%= result['shortDescription'] %> </a> </td>
     </tr>
   <% end %>
       
 
 </table>
-
-
 
 </div>
