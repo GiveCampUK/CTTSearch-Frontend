@@ -176,13 +176,22 @@ form label {
 	-webkit-border-radius: 4px;
 }
 
-#search_input_area .error {
+.error {
+	margin: 0;
+	height: 50px;
+	overflow: hidden;
+}
+
+.error div {
+	height: 40px;
+	line-height: 40px;
+	border-radius: 5px;
+	padding: 5px;
 	background: #E81515;
 	color: #FFF;
 	text-align: center;
-	border-radius: 5px;
-	padding: 8px;
-	margin: 0 0 10px;
+	font-size: 1.2em;
+	font-weight: 700;
 }
 
 /************************/

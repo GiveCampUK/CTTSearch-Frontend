@@ -10,16 +10,31 @@
 				init: function() {
 
 					var domSearchInputArea = $('#search_input_area'),
-						domQuery = $('#query');
+						domQuery = $('#query'),
+						domError = $('<div class="error"><div/></div>').css('opacity', 0)
+										.height(0).insertBefore(domSearchInputArea),
+						domErrorText = domError.find('div');
 					
 					domSearchInputArea.closest('form').submit(function(){
 						if (/^\s*$/.test(domQuery.val())) {
-							alert('Please enter something');
+
+							domErrorText.text('Please enter something below');
+							domError.show().animate({
+								height: 50
+							}, 200).animate({opacity:1});
+
 							return false;
 						}
 					});
 				}
 
+			}],
+			['/search', {
+				init: function() {
+					$('.result.promoted').each(function(){
+						$(this).prependTo(this.parentNode);
+					});
+				}
 			}],
 			['/$', {
 
