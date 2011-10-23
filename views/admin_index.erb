@@ -6,10 +6,12 @@
 <table>
   <tr>
     <th>Title</th>
+	<th> Short Description </th>
   <tr>
   <% @results.each do |result| %>
     <tr>
-      <th> <a href="/admin/edit?id=<%= result['id'] %>" ><%= result['title'] %> </a> </th>
+      <td width=220 padding=5> <a href="/admin/edit?id=<%= result['id'] %>" ><%= result['title'] %> </a> </td>
+<td width=350><%= result['shortDescription'] %> </a> </td>
     </tr>
   <% end %>
       
