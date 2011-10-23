@@ -5,10 +5,8 @@ require 'open-uri'
 class Search
   def self.party(query = "", tags = [])
     return if query.empty? && tags.empty?
-    
-    tags = tags.map {|t| "^#{t}"}
     path = "/search?q=#{escaped query}"
-    path << "#{escaped tags.join(" ")}" unless tags.empty?
+    path << "&tags=#{escaped tags.join(" ")}" unless tags.empty?
     query_api path
   end
   
