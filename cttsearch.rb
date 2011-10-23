@@ -34,11 +34,21 @@ class CTTSearch < Sinatra::Base
   end
 
   get '/admin' do
+    if params.has_key?('success') and params['success']=='true'    
+      @success = true
+    else
+      @success = false
+    end
     @results = Search.party(' ', []) ## get a list of all entries
   	erb :admin_index
   end
 
   get '/admin/edit' do
+    if params.has_key?('success') and params['success']=='true'    
+      @success = true
+    else
+      @success = false
+    end
     @resourcetypes = ['ExternalLink', 'YouTubeVideo', 'InternalLink', 'PDF']
     @resource = Resource.get(params['id']) ## get a list of all entries
 
@@ -46,10 +56,22 @@ class CTTSearch < Sinatra::Base
   end
 
   get '/admin/new' do
+    if params.has_key?('success') and params['success']=='true'    
+      redirect '/admin?success=true'
+    else
+      @success = false
+    end
+    
     @resourcetypes = ['ExternalLink', 'YouTubeVideo', 'InternalLink', 'PDF']
     @resource = {'id' => 0, 'title' => '', 'uri' => '', 'tags' => '', 'shortDescription' => '', 'longDescription' => '', 'resourceType' => ''}
 
   	erb :admin_edit
+  end
+
+  get '/admin/tags/:tags' do
+    @tags = (params[:tags] || "").split(",")
+    @results = Search.party(' ', @tags) ## get a list of all entries with given tags
+    erb :admin_index
   end
 
 end
