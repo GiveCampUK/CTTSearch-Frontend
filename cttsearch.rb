@@ -45,4 +45,11 @@ class CTTSearch < Sinatra::Base
   	erb :admin_edit
   end
 
+  get '/admin/new' do
+    @resourcetypes = ['ExternalLink', 'YouTubeVideo', 'InternalLink', 'PDF']
+    @resource = {'id' => 0, 'title' => '', 'uri' => '', 'tags' => '', 'shortDescription' => '', 'longDescription' => '', 'resourceType' => ''}
+
+  	erb :admin_edit
+  end
+
 end
