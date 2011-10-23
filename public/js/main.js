@@ -29,10 +29,12 @@
 				}
 
 			}],
-			['/admin/(?:new|edit)', {
+			['^/admin', {
 				
 				init: function() {
-					this.tagList = new this.TagList(this, $('input#Tags'));
+					var i = $('input#Tags');
+					if (i[0])
+						this.tagList = new this.TagList(this, i);
 				},
 
 				/**
