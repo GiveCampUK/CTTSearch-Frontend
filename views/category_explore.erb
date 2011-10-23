@@ -2,27 +2,22 @@
   Explore Categories
 <% end %>
 
-
-
-
 <div id="category_explore">
 
   <div id="top_level_categories">
     <h2>Categories</h2>
     <ul>
-      <% @top_level_categories.each do |cat| %>
+      <% @categories.each do |cat| %>
         <li>
-          <h3><a href="#"><%= cat[:title] %></a></h3>
+          <h3><a href="/cats/<%= cat["id"] %>"><%= cat["title"] %></a></h3>
         </li>
       <% end %>
     </ul>
   </div>
 
   <div id="sub-categories">
-
-    <h2>Some category</h2>
-
-    <%= erb :categories %>
+    <h1><%= @category["title"] %></h1>
+    <p><%= @category["blurb"] %></p>
 
     <div id="search_input_area" class="panel">
       <h2>I want to find out:</h2>

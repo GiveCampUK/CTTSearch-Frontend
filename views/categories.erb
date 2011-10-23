@@ -2,12 +2,12 @@
 
 	<% @categories.each do |cat| %>
 		<div class="category">
-			<h3><a href="#"><%= cat[:title] %></a></h3>
-			<p><%= cat[:blurb] %></p>
+			<h3><a href="/cats/<%= cat["id"] %>"><%= cat["title"] %></a></h3>
+			<p><%= cat["blurb"] %></p>
 			<ul>
-				<li><a href="#">How do I set up my emails?</a></li>
-				<li><a href="#">Category item</a></li>
-				<li><a href="#">Category item</a></li>
+			  <% cat["searchResultLinks"].each do |link| %>
+  				<li><a href="/search?q=<%= link["title"].escaped %>"><%= link["title"] %></a></li>
+				<% end %>
 			</ul>
 		</div>
 	<% end %>

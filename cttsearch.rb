@@ -9,13 +9,13 @@ class CTTSearch < Sinatra::Base
   set :root, File.dirname(__FILE__)
   
   get '/' do
-    @categories = Categories.all
+    @categories = Search.cats
     erb :index
   end
   
-  get '/cats' do
-    @categories = Categories.all ## Todo: this needs to be sub-cats
-    @top_level_categories = Categories.all ## Todo: this needs to be top level cats
+  get '/cats/:id' do
+    @categories = Search.cats
+    @category = Search.cat(params[:id])
     erb :category_explore
   end
 
