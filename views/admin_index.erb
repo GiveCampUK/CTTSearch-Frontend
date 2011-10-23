@@ -16,6 +16,7 @@
   <h2>Edit existing Resources</h2>
 <% if @tags %>
   <p>Only showing resources tagged with: <%= @tags %></p>
+  <p><a href="/admin">clear filter</a></p>
 <% else %>
   <p>
     <form action="/admin/tags" method="get">
