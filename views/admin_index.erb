@@ -1,0 +1,21 @@
+<% content_for :title do %>
+	Admin index page
+<% end %>
+<div id="admin_index_page">
+
+<table>
+  <tr>
+    <th>Title</th>
+  <tr>
+  <% @results['results'].each do |result| %>
+    <tr>
+      <th> <a href="/admin/edit?id=<%= result[0]['id'] %>" >Search Party <%= result[0]['title'] %> </a> </th>
+    </tr>
+  <% end %>
+      
+
+</table>
+
+
+
+</div>

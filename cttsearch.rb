@@ -32,4 +32,14 @@ class CTTSearch < Sinatra::Base
     p "Redirecting to Search?: #{builder.uri}"
     redirect builder.uri
   end
+
+  get '/admin' do
+    @results = Search.party(' ', [])
+  	erb :admin_index
+  end
+
+  get '/admin/edit' do
+  	erb :admin_edit
+  end
+
 end
