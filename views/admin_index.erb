@@ -3,10 +3,15 @@
 <% end %>
 <div id="admin_index_page">
 
+<% if @success %>
+  <p> Resource succesfully created.</p>
+<% end %>
+
+
   <h2>Create a new Resource</h2>
 <a href="/admin/new" >Create new resource </a> 
 <br>
-<br>
+
 <br>
   <h2>Edit existing Resources</h2>
 <% if @tags %>

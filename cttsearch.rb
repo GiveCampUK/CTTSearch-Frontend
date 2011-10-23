@@ -35,6 +35,11 @@ class CTTSearch < Sinatra::Base
   end
 
   get '/admin' do
+    if params.has_key?('success') and params['success']=='true'    
+      @success = true
+    else
+      @success = false
+    end
     @results = Search.party(' ', []) ## get a list of all entries
   	erb :admin_index
   end
@@ -53,7 +58,7 @@ class CTTSearch < Sinatra::Base
 
   get '/admin/new' do
     if params.has_key?('success') and params['success']=='true'    
-      redirect '/admin'
+      redirect '/admin?success=true'
     else
       @success = false
     end
