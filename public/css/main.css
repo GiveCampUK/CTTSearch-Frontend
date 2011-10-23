@@ -1,5 +1,18 @@
 
-/** GENERIC **/
+/************************/
+/******** GENERIC *******/
+/************************/
+
+@-webkit-keyframes fadeIn {
+	0% { -webkit-transform: translateY(-100px); opacity: 0; }
+	100% { -webkit-transform: translateY(0); opacity: .999; }
+}
+
+@-moz-keyframes fadeIn {
+	0% { -moz-transform: translateY(-100px); opacity: 0; }
+	100% { -moz-transform: translateY(0); opacity: .999; }
+}
+
 body {
 	margin: 0;
 	padding: 0;
@@ -7,6 +20,8 @@ body {
 	color: #111;
 	font-size: .8em;
 	font-family: sans-serif;
+	-webkit-animation: fadeIn .6s;
+	-moz-animation: fadeIn .6s;
 }
 
 body, ul, ol, li, img, form, p, h1, h2, h3, h4, h5, h6 {
@@ -31,7 +46,9 @@ a:hover, a:focus { text-decoration: underline; color: #8FC63F;  }
 }
 
 
-/** MAIN **/
+/************************/
+/******** MAIN **********/
+/************************/
 
 #main {
 	background: #DDD;
@@ -63,7 +80,9 @@ a:hover, a:focus { text-decoration: underline; color: #8FC63F;  }
 	background: #DDD;	
 }
 
-/** QUERY FORM **/
+/************************/
+/******* MAIN FORM ******/
+/************************/
 
 #who_are_you {
 	overflow: hidden;
@@ -91,9 +110,24 @@ form .ui-slider-horizontal .ui-slider-handle {
 	background: #8FC63F;
 }
 
+@-webkit-keyframes slideLeft {
+	0% { -webkit-transform: translateX(200px); opacity: 0; }
+	100% { -webkit-transform: translateX(0); opacity: .999; }
+}
+
+@-moz-keyframes slideLeft {
+	0% { -moz-transform: translateX(200px); opacity: 0; }
+	100% { -moz-transform: translateX(0); opacity: .999; }
+}
+
 form .ui-slider-horizontal .ui-slider-handle {
 	border-radius: 10px;
 	background: #8FC63F;
+	-webkit-transform: translateX(200px);
+	-moz-transform: translateX(200px);
+	opacity: 0;
+	-webkit-animation: slideLeft 1s .5s forwards;
+	-moz-animation: slideLeft 1s .5s forwards;
 }
 
 form label {
@@ -122,7 +156,7 @@ form label {
 }	
 
 #search_input_area h2 {
-	text-align: left;
+	display: inline;
 }
 
 #search_input_area #query {
@@ -136,9 +170,24 @@ form label {
 	padding: 6px;
 	font-size: 1.4em;
 	background-color: #8FC63F;
+	border: 2px solid #689922;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
 }
 
-/** CONTENT **/
+#search_input_area .error {
+	background: #E81515;
+	color: #FFF;
+	text-align: center;
+	border-radius: 5px;
+	padding: 8px;
+	margin: 0 0 10px;
+}
+
+/************************/
+/******** CONTENT *******/
+/************************/
 
 #content {
 	padding: 30px;
@@ -178,6 +227,10 @@ h1 {
 
 .categories .category ul {
 	padding: 10px 0 15px 3em;
+}
+
+#popular_topics h2 {
+	margin-top: 20px;
 }
 
 /************************/
@@ -254,6 +307,44 @@ h1 {
 	border: 1px dotted #000;
 	margin: 0 0 20px;
 	padding: 10px;
+	overflow: hidden;
+	position: relative;
+}
+
+.results .result .read_more {
+	position: absolute;
+	z-index: 2;
+	bottom: 7px;
+	right: 7px;
+	text-align: right;
+	background: #8FC63F;
+	color: #000;
+	border: 2px solid #CCC;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	text-decoration: none;
+	padding: 4px 5px;
+	font-weight: 700;
+}
+
+.results .result h3:before {
+	/* Gradient fade out */
+	content: " ";
+	position: absolute;
+	width: 100%;
+	height: 40px;
+	pointer-events: none;
+	bottom: 0;
+	left: 0;
+}
+
+.results .type_text h3:before {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(232, 242, 214,0)), color-stop(70%, rgb(232, 242, 214)));
+}
+
+.results .video_with_description h3:before {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(190, 194, 197,0)), color-stop(70%, rgb(190, 194, 197)));
 }
 
 .results div.promoted /* up specificity */ {
@@ -271,11 +362,15 @@ h1 {
 
 /* Result types */
 
-.results .type_text { height: 150px; border-color: #8FC63F; background-color: #E8F2D6; }
+.results .type_text {
+	height: 150px; border-color: #8FC63F; background-color: #E8F2D6;
+}
 .results .type_video { height: 300px; border-color: #543E87; background-color: #BEC2C5; }
 .results .type_link { height: 300px; border-color: #F37A22; background-color: #FBE4D6; }
 
-.results .video_with_description { height: 492px; }
+.results .video_with_description {
+	height: 492px;
+}
 
 /************************/
 /** SINGLE RESULT PAGE **/

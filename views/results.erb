@@ -27,8 +27,6 @@
 	  <p>Exactly what you asked for!</p>
 	  <p><a href="http://www.sadtrombone.com" target="_blank">Now Go Here</a></p>
 	<% else %>
-	
-	<% column1 = @results.select { |item| item[:column] == :column1  } %>
 
 		<div class="results">
 			<ul class="alternate_level_nav">
@@ -39,26 +37,15 @@
 			<div class="content">
 
 				<div class="column first_column">
-				  
-				  <% column1.each do |col1Item| %>
-				  
-				  case col1Item[:tags]
-				    when
-				  end
-
-        	<% end %>
 
 					<div class="result type_text promoted">
 						<h3>This is content!</h3>
-						<p>Interesting thing detailing how to do interesting thing.</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas lacus eu arcu sollicitudin convallis. Vivamus quam lacus, porttitor in fringilla a, dignissim eget leo. Vestibulum hendrerit augue eu lectus facilisis quis faucibus sem molestie. Nam justo tortor, scelerisque sed vestibulum non, laoreet quis nulla. Curabitur sed fermentum nibh. Pellentesque in dolor est. Proin feugiat nisi nec augue adipiscing luctus. Morbi at velit eros. Donec in nulla augue, sit amet condimentum risus. Donec eleifend felis velit. Nulla metus dui, dignissim ac tristique a, varius ullamcorper nibh. Phasellus blandit felis non lacus tempor sit amet aliquam felis eleifend. Nullam porta tempor quam vel venenatis. Proin commodo, mauris lobortis venenatis placerat, justo urna rhoncus felis, vel mollis eros eros ut massa. Maecenas interdum nulla aliquet nibh iaculis consequat. Fusce at cursus ligula.</p>
+						<a class="read_more" href="#">Read more &raquo;</a>
 					</div>
 
 					<div class="result type_video">
 						<iframe width="420" height="300" src="http://www.youtube.com/embed/QH2-TGUlwu4" frameborder="0" allowfullscreen></iframe>
-					</div>
-
-					<div class="result type_link">
-						
 					</div>
 
 					<div class="result type_text">
@@ -79,6 +66,7 @@
 						<div class="description">
 							<p>Nyan cat is the 7th reincarnation of the Egyption Goddess, Gah, an ominous presence that ruled the...</p>
 						</div>
+						<a class="read_more" href="#">See more &raquo;</a>
 					</div>
 
 					<div class="result type_text">
@@ -97,5 +85,4 @@
 		</div>
 
 	<% end %>
-
 </div>

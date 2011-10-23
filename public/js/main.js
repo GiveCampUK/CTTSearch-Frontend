@@ -5,9 +5,29 @@
 	this.CTT = {
 
 		views: [
+			['.', {
+				
+				init: function() {
+
+					var domSearchInputArea = $('#search_input_area'),
+						domQuery = $('#query');
+					
+					domSearchInputArea.closest('form').submit(function(){
+						if (/^\s*$/.test(domQuery.val())) {
+							alert('Please enter something');
+							return false;
+						}
+					});
+				}
+
+			}],
 			['/$', {
 
 				init: function() {
+					this.setupSliders();
+				},
+
+				setupSliders: function() {
 
 					// Setup sliders
 
@@ -103,10 +123,7 @@
 	};
 
 	Function.prototype.bind = Function.prototype.bind || function(b) {
-		var f = this;
-		return function() {
-			return f.apply(b, arguments);
-		}	;
+		var f = this; return function() {return f.apply(b, arguments);};
 	};
 
 }();
